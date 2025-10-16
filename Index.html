@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+     <style>
+     
+    body{margin:0;font-family:Arial, Helvetica, sans-serif;background:#f3f3ee;color:#111}
+    a{text-decoration:none;color:inherit}
+
+    /* barra promo */
+    #promo{background:#000;color:#fff;text-align:center;padding:6px 10px;font-size:14px}
+    #info{background:#111;color:#fff}
+    #info .wrap{max-width:1100px;margin:auto;padding:8px 16px;display:flex;gap:40px;justify-content:center;justify-content: center;flex-wrap:wrap;font-size:14px}
+
+    /* logo */
+    header{background:#f3f3ee;border-bottom:1px solid #e6e6e6;text-align:center;padding:24px 0}
+    #logo img{height:140px;width:auto}
+
+    /* centrado */
+    nav{background:#000;color:#fff;position:relative}
+    nav .bar{max-width:1100px;margin:0 auto;min-height:48px;display:flex;justify-content:center;align-items:center;position:relative}
+    #menu{list-style:none;display:flex;gap:22px;padding:0;margin:0}
+    #menu a{display:block;padding:12px 4px;color:#fff}
+    #menu a.active,#menu a:hover{color:#ffd700}
+    #cart{position:absolute;right:16px;top:50%;transform:translateY(-50%)}
+    #btnHamb{display:none;position:absolute;left:16px;top:50%;transform:translateY(-50%);border:0;border-radius:8px;padding:6px 10px;background:#fff;color:#000;cursor:pointer}
+
+    /* sección productos */
+    main{padding:24px 0}
+    .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+    #productosGrid{display:grid;gap:20px;grid-template-columns:repeat(2,minmax(320px,1fr))}
+    .card{background:#fff;border:1px solid #e8e8ea;border-radius:14px;overflow:hidden;box-shadow:0 1px 10px rgba(0,0,0,.05)}
+    .media{position:relative;height:340px;background:#f3f3ee}
+    .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+    .ctrl{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:999px;border:0;background:rgba(0,0,0,.55);color:#fff;cursor:pointer}
+    .prev{left:10px}.next{right:10px}
+    .body{padding:12px}
+    .price{font-weight:700}
+    .meta{color:#666;font-size:14px}
+    .actions{display:flex;gap:10px;padding:12px;border-top:1px solid #eee}
+    .btn{padding:8px 10px;border:0;border-radius:10px;cursor:pointer;font-weight:700}
+    .btn.green{background:#e9f9ee;color:#0b6b2b}
+    .btn.ghost{background:#eef3ff;color:#163d93}
+
+    /* responsive */
+    @media (max-width:900px){
+      #btnHamb{display:block}
+      #menu{display:none;position:absolute;left:0;top:100%;width:100%;flex-direction:column;align-items:center;background:#000;border-top:1px solid #222}
+      #menu.show{display:flex}
+      #productosGrid{grid-template-columns:1fr}
+    }
+    html { scroll-behavior: smooth; }           /* scroll suave al hacer clic en PROMOS */
+.btn.green { background:#0b6b2b; color:#fff }/* botón verde sólido para la promo */
+.btn.green:hover { filter:brightness(1.05) }
+
+
+/* Carrito */
+#cartPanel{
+  position:fixed; right:0; top:0; height:100vh; width:360px;
+  background:#fff; border-left:1px solid #e6e6e6; box-shadow:-6px 0 18px rgba(0,0,0,.08);
+  padding:12px; z-index:9999;
+  display:none;
+}
+#cartHeader{ display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid #eee }
+#cartHeader h3{ font-size:1.1rem }
+#cartHeader #cartCerrar{ border:0; background:#f3f3ee; border-radius:8px; padding:6px 10px; cursor:pointer }
+
+#cartItems{ padding:10px 0; max-height:65vh; overflow:auto }
+.cartRow{
+  display:grid; grid-template-columns: 1fr auto; gap:6px;
+  padding:10px 0; border-bottom:1px solid #f0f0f0;
+}
+.cartTitle{ font-weight:700 }
+.cartControls{ display:flex; align-items:center; gap:6px }
+.cartBtn{ border:0; background:#eef3ff; color:#163d93; border-radius:8px; padding:4px 8px; cursor:pointer }
+.cartDel{ border:0; background:#ffecec; color:#7d0b0b; border-radius:8px; padding:4px 8px; cursor:pointer }
+
+#cartFooter{ position:sticky; left:0; right:0; bottom:0; padding:10px 16px; border-top:1px solid #eee; display:flex;
+  justify-content:space-between; align-items:center; background:#fff; margin-top: 12px; box-shadow: 0 -2px 6px rgba(0,0,0,.05); }
+#cartTotal{ font-weight:800 }
+
+/* Botón carrito */
+#cartBtn{
+  position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  border:0; background:#ffd700; color:#000; 
+  font-weight:800; padding:6px 10px; border-radius:10px; cursor:pointer;
+  display:flex; align-items:center; gap:6px;
+}
+#cartBtn:hover{ filter:brightness(0.95); }
+
+
+  </style>
+
+    
+</head>
+
+<body>
+   <div id="promo">¡Bienvenidos a la mejor pagina web online para comprar tu mejor mate artesanal!</div>
+
+  <!-- barra info -->
+  <div id="info">
+    <div class="wrap">
+      <div>📞 +54 9 11 3848 7225</div>
+      <div>✉️ MateP@gmail.com</div>
+      <div>📍 Fitz Roy 1965, Palermo, CABA</div>
+    </div>
+  </div>
+
+  <!-- header/logo -->
+  <header>
+    <a id="logo" href="#"><img src="logo_matep.png" alt="Logo Mate P"></a>
+  </header>
+
+  <!-- navegación -->
+  <nav>
+    <div class="bar">
+      <button id="btnHamb">☰</button>
+      <ul id="menu">
+        <li><a class="active" href="#inicio">INICIO</a></li>
+        <li><a href="#productos">PRODUCTOS</a></li>
+        <li><a href="#promos">PROMOS</a></li>
+        <li><a href="#tutoriales">TUTORIALES</a></li>
+        <li><a href="#contacto">CONTACTO</a></li>
+      </ul>
+      <button id="cartBtn" type="button" aria-label="Abrir carrito">
+  🛒 <span id="cartCount">0</span>
+</button>
+
+    </div>
+  </nav>
+
+  <!-- ============ Carrito (panel simple) ============ -->
+  <div id="cartPanel" style="display:none;">
+    <div id="cartHeader">
+      <h3 style="margin:0;">Tu carrito</h3>
+      <button id="cartCerrar" title="Cerrar">✕</button>
+    </div>
+    <div id="cartItems"></div>
+    <div id="cartFooter">
+      <div id="cartTotal">Total: $ 0</div>
+      <div style="display:flex; gap:8px;">
+        <button id="cartVaciar" class="btn">Vaciar</button>
+        <button id="cartComprar" class="btn green">Comprar</button>
+      </div>
+    </div>
+  </div>
+
+    <!-- contenido -->
+    <main class="wrap" id="productos">
+      <h2>Productos</h2>
+      <p class="meta">Deslizá las fotos con las flechas.</p>
+      <div id="productosGrid"></div>
+  </main>
+
+ <!-- =================== PROMOS =================== -->
+<section id="promos" style="background:#ffd700; margin-top:40px;">
+  <div class="wrap" style="padding:28px 16px;">
+    <h2 style="margin:0 0 8px;">Promo de Verano</h2>
+    <p class="meta" style="margin:0 0 16px;">Combo especial por tiempo limitado.</p>
+
+    <article class="promo-card" style="
+      background:#fff;border:1px solid #e8e8ea;border-radius:14px;overflow:hidden;
+      box-shadow:0 1px 10px rgba(0,0,0,.06); display:flex; gap:16px; padding:16px; align-items:center;">
+      
+      <img src="matepromo1.jpg" alt="Promo de Verano" style="width:240px;height:180px;object-fit:cover;border-radius:12px">
+
+      <div style="flex:1">
+        <h3 style="margin:0 0 6px;">MATE IMPERIAL DE ALGARROBO CON BASE DE ALPACA + Matera + Bombilla</h3>
+        <ul style="margin:0 0 10px 18px; padding:0;">
+          <li>Mate Imperial de algarrobo con base de alpaca</li>
+          <li>Matera</li>
+          <li>Bombilla</li>
+        </ul>
+        <div style="font-weight:800; font-size:1.2rem; margin-bottom:10px;">$ 70.000</div>
+        <button id="btnPromo" class="btn green">Agregar promo al carrito</button>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+
+  <script src="TP.js"></script>
+</body>
+</html>
