@@ -91,6 +91,311 @@
 }
 #cartBtn:hover{ filter:brightness(0.95); }
 
+/* tutoriales */
+#tutoriales{ padding:28px 0; background:#f3f3ee; }  
+.tutorial-card{
+  background:#fff; border:1px solid #e8e8ea; border-radius:14px; overflow:hidden;
+  box-shadow:0 1px 10px rgba(0,0,0,.06);
+  display:flex; gap:16px; padding:16px; align-items:center;
+}
+.tutorial-media{
+  width:340px; max-width:100%;
+}
+.tutorial-media img{
+  width:100%; height:240px; object-fit:cover; border-radius:12px;
+}
+.tutorial-body h3{ margin:0 0 6px }
+.tutorial-body .meta{ margin:0 0 10px }
+.tutorial-body ol{ margin:0 0 12px 18px; padding:0 }
+.tutorial-body .btn{ background:#eef3ff; color:#163d93 } 
+
+/* responsive */
+@media (max-width:900px){
+  .tutorial-card{ flex-direction:column; align-items:flex-start }
+  .tutorial-media{ width:100% }
+  .tutorial-media img{ height:220px }
+}
+
+/* boton amarillo (compra) */
+.animated-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 30px;
+  border: 4px solid transparent;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 700;
+  color: #ffd700;
+  box-shadow: 0 0 0 2px #ffd700;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 22px;
+  fill: #ffd700;
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 16px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #ffd700;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* === Hover corregido === */
+.animated-button:hover {
+  background-color: #ffd700;     
+  color: #111;                   
+  border-radius: 12px;
+  box-shadow: 0 0 0 8px rgba(255, 215, 0, 0.3); 
+  transition: all 0.3s ease;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+  color: #111;                   
+}
+
+.animated-button:hover svg {
+  fill: #111;                    
+}
+
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px #ffd700;
+}
+
+.animated-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 0.25;                 
+  background-color: #ffd700;
+}
+
+
+/* boton gris (detalle) */
+.animated-button-gray {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 22px; /* más chico que el amarillo */
+  border: 3px solid transparent;
+  font-size: 14px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: #aaa;
+  box-shadow: 0 0 0 2px #aaa;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button-gray svg {
+  position: absolute;
+  width: 18px;
+  fill: #aaa;
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button-gray .arr-1 {
+  right: 12px;
+}
+
+.animated-button-gray .arr-2 {
+  left: -25%;
+}
+
+.animated-button-gray .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background-color: #aaa;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button-gray .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-10px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button-gray:hover {
+  box-shadow: 0 0 0 10px transparent;
+  color: #111;
+  border-radius: 12px;
+}
+
+.animated-button-gray:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button-gray:hover .arr-2 {
+  left: 12px;
+}
+
+.animated-button-gray:hover .text {
+  transform: translateX(10px);
+}
+
+.animated-button-gray:hover svg {
+  fill: #111;
+}
+
+.animated-button-gray:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 3px #aaa;
+}
+
+.animated-button-gray:hover .circle {
+  width: 180px;
+  height: 180px;
+  opacity: 1;
+}
+
+/* ===== FOOTER ===== */
+#footer {
+  background: #000;
+  color: #fff;
+  padding: 40px 16px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#footer .wrap {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-logo {
+  text-align: center;
+}
+
+.footer-logo img {
+  width: 90px;
+  margin-bottom: 10px;
+}
+
+.footer-logo h3 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.footer-logo p {
+  margin: 0;
+  font-size: 12px;
+  color: #ccc;
+  letter-spacing: 1px;
+}
+
+.footer-info {
+  flex: 1;
+  max-width: 650px;
+  line-height: 1.6;
+  color: #ddd;
+  font-size: 15px;
+}
+
+.footer-info a {
+  color: #ffd700;
+  text-decoration: none;
+}
+
+.footer-info a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  border-top: 1px solid #222;
+  margin-top: 30px;
+  text-align: center;
+  padding-top: 16px;
+  color: #aaa;
+  font-size: 13px;
+}
+
+/*  footer responsive */
+@media (max-width: 720px){
+  #footer .wrap{
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-info{
+    max-width: 100%;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .footer-logo img{
+    width: 80px;
+  }
+
+  .footer-bottom{
+    font-size: 12px;
+    padding-top: 14px;
+  }
+}
+
+@media (max-width: 420px){
+  .footer-info{
+    padding: 0 6px;   
+  }
+}
+
+
+
 
   </style>
 
@@ -132,7 +437,7 @@
     </div>
   </nav>
 
-  <!-- ============ Carrito (panel simple) ============ -->
+  <!--  carrito  -->
   <div id="cartPanel" style="display:none;">
     <div id="cartHeader">
       <h3 style="margin:0;">Tu carrito</h3>
@@ -155,7 +460,7 @@
       <div id="productosGrid"></div>
   </main>
 
- <!-- =================== PROMOS =================== -->
+ <!-- promos -->
 <section id="promos" style="background:#ffd700; margin-top:40px;">
   <div class="wrap" style="padding:28px 16px;">
     <h2 style="margin:0 0 8px;">Promo de Verano</h2>
@@ -181,6 +486,62 @@
   </div>
 </section>
 
+<!-- tutoriales -->
+<section id="tutoriales">
+  <div class="wrap">
+    <h2 style="margin:0 0 8px;">Tutoriales</h2>
+    <p class="meta" style="margin:0 0 16px;">Cómo curar y preparar un mate perfecto.</p>
+
+    <article class="tutorial-card">
+      <div class="tutorial-media">
+        <img src="tutorialmate.jpg" alt="Cómo hacer un mate perfecto">
+      </div>
+
+      <div class="tutorial-body" style="flex:1">
+        <h3>Mate perfecto en 5 pasos</h3>
+        <ol>
+          <li>Curá el mate con yerba húmeda por 24 hs.</li>
+          <li>Llená ¾ con yerba y agitá suavemente.</li>
+          <li>Formá una “montañita” y humedecé un costado.</li>
+          <li>Insertá la bombilla en la parte húmeda.</li>
+          <li>Cebá con agua a 70 – 80 °C sin mojar toda la yerba.</li>
+        </ol>
+        <a href="#productos" class="btn">Ver mates</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- footer -->
+<footer id="footer">
+  <div class="wrap">
+    <div class="footer-logo">
+      <img src="logo_matep.png" alt="Logo MateP" />
+      <h3>mateP</h3>
+      <p>ONLINE STORE</p>
+    </div>
+
+    <div class="footer-info">
+      <p>
+        En <strong>MateP</strong> nos apasiona la tradición del mate artesanal. 
+        Cada pieza es cuidadosamente seleccionada para mantener viva la cultura 
+        y compartirla con el mundo.  
+        <br><br>
+        Fabricamos y distribuimos mates de la más alta calidad, 
+        priorizando materiales nobles y diseños únicos.
+      </p>
+      <p style="margin-top:12px; font-size:14px; color:#bbb;">
+        📍 Palermo, Buenos Aires, Argentina  
+        <br>✉️ <a href="mailto:matep@gmail.com">matep@gmail.com</a>  
+        <br>📞 +54 9 11 3848 7225
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 MateP. Todos los derechos reservados. | Desarrollado con pasión por el equipo de MateP </p>
+  </div>
+</footer>
 
 
   <script src="TP.js"></script>

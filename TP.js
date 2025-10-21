@@ -117,15 +117,34 @@ function renderProductos(){
     actions.className = "actions";
 
     var btnAdd = document.createElement("button");
-    btnAdd.className = "btn-sm btn-green";
+   btnAdd.className = "animated-button";
+   btnAdd.innerHTML = `
+  <span class="text">Agregar al carrito</span>
+  <svg class="arr-1" viewBox="0 0 46 16">
+    <path d="M0 8h45M45 8l-8-8M45 8l-8 8"></path>
+  </svg>
+  <svg class="arr-2" viewBox="0 0 46 16">
+    <path d="M0 8h45M45 8l-8-8M45 8l-8 8"></path>
+  </svg>
+  <span class="circle"></span>
+`;
+
     btnAdd.textContent = "Agregar al carrito";
     (function(idGuardado){
       btnAdd.addEventListener("click", function(){ addToCartById(idGuardado); });
     })(p.id);
 
     var btnDetalle = document.createElement("button");
-    btnDetalle.className = "btn-sm btn-ghost";
-    btnDetalle.textContent = "Detalle";
+    btnDetalle.className = "animated-button-gray";
+    btnDetalle.innerHTML = `
+  <span class="text">Detalle</span>
+  <svg class="arr-1" viewBox="0 0 46 16">
+    <path d="M0 8h45M45 8l-8-8M45 8l-8 8"></path>
+  </svg>
+  <svg class="arr-2" viewBox="0 0 46 16">
+    <path d="M0 8h45M45 8l-8-8M45 8l-8 8"></path>
+  </svg>
+  <span class="circle"></span>`;
     (function(prod){
       btnDetalle.addEventListener("click", function(){
         alert(prod.nombre + "\n" + prod.material + "\n" + precioARS(prod.precio));
